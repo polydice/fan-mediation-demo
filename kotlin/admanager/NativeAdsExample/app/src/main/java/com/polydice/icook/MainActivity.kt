@@ -1,47 +1,27 @@
-/*
- * Copyright (C) 2017 Google, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package com.google.android.gms.example.nativeadsexample
+package com.polydice.icook
 
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdLoader
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.VideoController
-import com.google.android.gms.ads.VideoOptions
+import com.facebook.FacebookSdk
+import com.facebook.ads.AudienceNetworkAds
+import com.facebook.appevents.AppEventsLogger
+import com.google.android.ads.mediationtestsuite.MediationTestSuite
+import com.google.android.gms.ads.*
 import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.nativead.MediaView
-import com.google.android.gms.ads.nativead.NativeAd
-import com.google.android.gms.ads.nativead.NativeAdOptions
-import com.google.android.gms.ads.nativead.NativeAdView
-import com.google.android.gms.ads.nativead.NativeCustomFormatAd
+import com.google.android.gms.ads.nativead.*
 import java.util.*
+import com.google.android.gms.ads.nativead.NativeAd
+import com.google.android.gms.ads.nativead.NativeCustomFormatAd
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val AD_MANAGER_AD_UNIT_ID = "/6499/example/native"
+const val AD_MANAGER_AD_UNIT_ID = "/40828883/iCook_App_Search_Top"
 const val SIMPLE_TEMPLATE_ID = "10104090"
 
 var currentNativeAd: NativeAd? = null
 var currentCustomFormatAd: NativeCustomFormatAd? = null
-
 /**
  * A simple activity class that displays native ad formats.
  */
@@ -50,12 +30,18 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-
+//    FacebookSdk.sdkInitialize(this) { AppEventsLogger.activateApp(this) }
+    AudienceNetworkAds.initialize(this)
     // Initialize the Mobile Ads SDK with an empty completion listener.
-    MobileAds.initialize(this) {}
+      MobileAds.initialize(this) {}
 
     refresh_button.setOnClickListener {
       refreshAd(nativeads_checkbox.isChecked, customtemplate_checkbox.isChecked)
+    }
+
+    open_testsuite.setOnClickListener {
+      MediationTestSuite.launchForAdManager(this)
+
     }
 
     refreshAd(nativeads_checkbox.isChecked, customtemplate_checkbox.isChecked)
@@ -150,7 +136,7 @@ class MainActivity : AppCompatActivity() {
     // Updates the UI to say whether or not this ad has a video asset.
     if (vc.hasVideoContent()) {
       videostatus_text.text = String.format(
-        Locale.getDefault(),
+          Locale.getDefault(),
         "Video status: Ad contains a %.2f:1 video asset.",
         nativeAd.mediaContent.aspectRatio
       )
@@ -181,8 +167,8 @@ class MainActivity : AppCompatActivity() {
    * @param adView the view to be populated
    */
   private fun populateSimpleTemplateAdView(
-    nativeCustomFormatAd: NativeCustomFormatAd,
-    adView: View
+      nativeCustomFormatAd: NativeCustomFormatAd,
+      adView: View
   ) {
     val headlineView = adView.findViewById<TextView>(R.id.simplecustom_headline)
     val captionView = adView.findViewById<TextView>(R.id.simplecustom_caption)
@@ -216,7 +202,7 @@ class MainActivity : AppCompatActivity() {
       // Kotlin doesn't include decimal-place formatting in its string interpolation, but
       // good ol' String.format works fine.
       videostatus_text.text = String.format(
-        Locale.getDefault(),
+          Locale.getDefault(),
         "Video status: Ad contains a video asset."
       )
     } else {
@@ -245,8 +231,8 @@ class MainActivity : AppCompatActivity() {
   ) {
     if (!requestNativeAds && !requestCustomTemplateAds) {
       Toast.makeText(
-        this, "At least one ad format must be checked to request an ad.",
-        Toast.LENGTH_SHORT
+          this, "At least one ad format must be checked to request an ad.",
+          Toast.LENGTH_SHORT
       ).show()
       return
     }
@@ -277,43 +263,6 @@ class MainActivity : AppCompatActivity() {
       }
     }
 
-    if (requestCustomTemplateAds) {
-      builder.forCustomFormatAd(
-        SIMPLE_TEMPLATE_ID,
-        {
-          ad: NativeCustomFormatAd ->
-          // If this callback occurs after the activity is destroyed, you must call
-          // destroy and return or you may get a memory leak.
-          var activityDestroyed = false
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            activityDestroyed = isDestroyed
-          }
-          if (activityDestroyed || isFinishing || isChangingConfigurations) {
-            ad.destroy()
-            return@forCustomFormatAd
-          }
-          // You must call destroy on old ads when you are done with them,
-          // otherwise you will have a memory leak.
-          currentCustomFormatAd?.destroy()
-          currentCustomFormatAd = ad
-          val frameLayout = findViewById<FrameLayout>(R.id.ad_frame)
-          val adView = layoutInflater
-            .inflate(R.layout.ad_simple_custom_template, null)
-          populateSimpleTemplateAdView(ad, adView)
-          frameLayout.removeAllViews()
-          frameLayout.addView(adView)
-        },
-        {
-          ad: NativeCustomFormatAd, s: String ->
-          Toast.makeText(
-            this@MainActivity,
-            "A custom click has occurred in the simple template",
-            Toast.LENGTH_SHORT
-          ).show()
-        }
-      )
-    }
-
     val videoOptions = VideoOptions.Builder()
       .setStartMuted(start_muted_checkbox.isChecked)
       .build()
@@ -332,8 +281,8 @@ class MainActivity : AppCompatActivity() {
             domain: ${loadAdError.domain}, code: ${loadAdError.code}, message: ${loadAdError.message}
           """
         Toast.makeText(
-          this@MainActivity, "Failed to load native ad with error $error",
-          Toast.LENGTH_SHORT
+            this@MainActivity, "Failed to load native ad with error $error",
+            Toast.LENGTH_SHORT
         ).show()
       }
     }).build()

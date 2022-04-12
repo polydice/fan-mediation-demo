@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Ad Manager Native Ads Example</string>
     <string name="ad_attribution">Ad</string>
+<!--    <string name="facebook_app_id" translatable="false">273393289342171</string>-->
 </resources>

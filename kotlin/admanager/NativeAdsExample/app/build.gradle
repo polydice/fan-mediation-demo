@@ -8,8 +8,8 @@ android {
     compileSdkVersion 31
     buildToolsVersion '30.0.3'
     defaultConfig {
-        applicationId "com.google.android.gms.example.nativeadsexample"
-        minSdkVersion 17
+        applicationId "com.polydice.icook"
+        minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -19,7 +19,14 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        all {
+            resValue "string", "facebook_app_id", "273393289342171"
+            resValue "string", "fb_login_protocol_scheme", "fb273393289342171"
+            resValue "string", "google_client_id", "380107654687-jgs48imrhkrfrbunlup1s7g11pv5fg4t.apps.googleusercontent.com"
+            resValue "string", "asset_statements", "[{\\\"include\\\":\\\"https://icook.tw/.well-known/assetlinks.json\\\"},{\\\"relation\\\": [\\\"delegate_permission/common.handle_all_urls\\\"], \\\"target\\\": {\\\"namespace\\\": \\\"web\\\",\\\"site\\\": \\\"https://icook.tw\\\"}},{\\\"relation\\\": [\\\"delegate_permission/common.handle_all_urls\\\"], \\\"target\\\": {\\\"namespace\\\": \\\"web\\\",\\\"site\\\": \\\"https://icook.hk\\\"}}]"
+        }
     }
+
 }
 
 dependencies {
@@ -27,4 +34,11 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.android.gms:play-services-ads:20.6.0'
+    def facebookLibraryVersion = '11.3.0'
+    implementation "com.facebook.android:facebook-login:$facebookLibraryVersion"
+    implementation "com.facebook.android:facebook-applinks:$facebookLibraryVersion"
+    implementation "com.facebook.android:facebook-share:$facebookLibraryVersion"
+    implementation "com.google.ads.mediation:facebook:6.8.0.0"
+    implementation "com.facebook.android:audience-network-sdk:6.8.0"
+    implementation ('com.google.android.ads:mediation-test-suite:2.0.0')
 }

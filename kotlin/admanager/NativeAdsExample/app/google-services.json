@@ -1,0 +1,134 @@
+{
+  "project_info": {
+    "project_number": "380107654687",
+    "firebase_url": "https://polydice-icook.firebaseio.com",
+    "project_id": "polydice-icook",
+    "storage_bucket": "polydice-icook.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380107654687:android:a4e9149f3d97c5cf",
+        "android_client_info": {
+          "package_name": "com.polydice.icook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380107654687-ek1i5lcmjdpi34gsdgafebbuun0nput1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polydice.icook",
+            "certificate_hash": "05409a8a68697b3b96b23a6e66bc76b5f2a685b5"
+          }
+        },
+        {
+          "client_id": "380107654687-63b37a2mbhku3pmckjep5grpf9jhjc5t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polydice.icook",
+            "certificate_hash": "46fb2f0ccb50024737d29936dae05bc2ba3e8e29"
+          }
+        },
+        {
+          "client_id": "380107654687-94qrrn7p8qllv7i2gbogcmeni786u4er.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polydice.icook",
+            "certificate_hash": "6e74cde7dacb6989907017c1962bf5351f518753"
+          }
+        },
+        {
+          "client_id": "380107654687-c1dtb9udrskv6g7oihpq5k5rf4cua0ln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polydice.icook",
+            "certificate_hash": "b88bed506c59a5576a2588b777a289d8644db4c7"
+          }
+        },
+        {
+          "client_id": "380107654687-dn8kh6kgvn970tcreiepamsu0op6cm9n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polydice.icook",
+            "certificate_hash": "351c9bd8d3746608af005f5e7723dfac4a19c005"
+          }
+        },
+        {
+          "client_id": "380107654687-lkqns494833bd93inac39dnsdkej77dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwWqCl0PCrpY6F6yeUlkJdHq54cOroEg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113880280295323639278",
+              "client_type": 3
+            },
+            {
+              "client_id": "380107654687-73m0t3ul04p8m6ntsngqdteqc9ocmlpj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.thepolydice.icook",
+                "app_store_id": "554065086"
+              }
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-5337190296893812~4506072684"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380107654687:android:2ada5c949406123e",
+        "android_client_info": {
+          "package_name": "com.polydice.icook.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380107654687-9rak4dmmvct39mjpdm258apv7mron3ul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.polydice.icook.dev",
+            "certificate_hash": "46fb2f0ccb50024737d29936dae05bc2ba3e8e29"
+          }
+        },
+        {
+          "client_id": "380107654687-lkqns494833bd93inac39dnsdkej77dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwWqCl0PCrpY6F6yeUlkJdHq54cOroEg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113880280295323639278",
+              "client_type": 3
+            },
+            {
+              "client_id": "380107654687-73m0t3ul04p8m6ntsngqdteqc9ocmlpj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.thepolydice.icook",
+                "app_store_id": "554065086"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -46,6 +46,15 @@
             android:layout_marginTop="16dp"
             android:text="Refresh Ad" />
 
+        <Button
+            android:id="@+id/open_testsuite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Open testsuite" />
+
         <TextView
             android:id="@+id/videostatus_text"
             android:layout_width="match_parent"
@@ -54,6 +63,8 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:text="Video status: "
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+
 
     </LinearLayout>
 </ScrollView>
